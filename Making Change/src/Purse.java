@@ -14,22 +14,23 @@ public class Purse {
         return withdraw;
     }
 
-    public double getValue() {
+    public double getTotal() {
         double total = 0;
         for (Map.Entry<Denomination, Integer> entry : cash.entrySet()) {
-            total += entry.getValue();
+            total += entry.getKey().getNoteValue() * entry.getValue();
         }
         return total;
     }
 
-    public String toString() {
+    public String outputString() {
         String contents = "";
         if (cash.isEmpty()) {
             return "Nothing";
         }
         for (Map.Entry<Denomination, Integer> entry : cash.entrySet()){
-            contents = contents + cash.get(entry.getValue()) + " " + entry.getKey() + "\n";
+            contents = contents + entry.getValue() + " " + entry.getKey() + "\n";
         }
+        contents = contents + getTotal() + "\n";
         return contents;
     }
 }

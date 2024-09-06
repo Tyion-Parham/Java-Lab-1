@@ -2,15 +2,11 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Register {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        
+        Purse lady;
+        lady = makeChange(83.46);
+        System.out.println(lady.outputString());
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
     }
 
     public static Purse makeChange (double amt){
@@ -27,7 +23,7 @@ public class Register {
         Denomination nickel = new Denomination("nickel", .05);
         Denomination penny = new Denomination("penny", .01);
 
-        while (amt > 0){
+        while (amt > 0.005){
             tempnum = 0;
             if (amt >= 100){
                 while (amt >= 100){
@@ -53,8 +49,45 @@ public class Register {
                     amt -= 10;
                 }
                 p.addToPurse(ten, tempnum);
+            }else if (amt>= 5){
+                while (amt >= 5){
+                    tempnum++;
+                    amt -= 5;
+                }
+                p.addToPurse(five, tempnum);
+            }else if (amt >= 1){
+                while (amt >= 1){
+                    tempnum++;
+                    amt -= 1;
+                }
+                p.addToPurse(one, tempnum);
+            }else if (amt >= .25){
+                while (amt >= .25){
+                    tempnum++;
+                    amt -= .25;
+                }
+                p.addToPurse(quarter, tempnum);
+            }else if (amt >= .1){
+                while (amt >= .1){
+                    tempnum++;
+                    amt -= .1;
+                }
+                p.addToPurse(dime, tempnum);
+            }else if (amt >= .05){
+                while (amt >= .05){
+                    tempnum++;
+                    amt -= .05;
+                }
+                p.addToPurse(nickel, tempnum);
+            }else if (amt >= .005){
+                while (amt >= .005){
+                    tempnum++;
+                    amt -= .01;
+                }
+                p.addToPurse(penny, tempnum);
             }
         }
+        return p;
     }
 
 }
