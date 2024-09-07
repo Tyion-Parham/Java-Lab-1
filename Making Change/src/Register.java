@@ -1,10 +1,13 @@
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Register {
     public static void main(String[] args) {
-        
+        System.out.println("Enter an amount of money in the purse: ");
+        Scanner sc = new Scanner(System.in);
         Purse lady;
-        lady = makeChange(83.46);
+        lady = makeChange(sc.nextDouble());
         System.out.println(lady.outputString());
 
     }
